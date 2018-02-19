@@ -1,32 +1,59 @@
+//stating variables
   int height = 1000;
   int width = 1000;
+  int[][] colorPallette;
+  
 void setup()  {
   size(1000,1000);
+     
+//storing colors
+  int[] Color1 = new int[3];
+            Color1[0] = 241;
+            Color1[1] = 90;
+            Color1[2] = 90;
+  int[] Color2 = new int[3];
+          Color2[0] = 240;
+          Color2[1] = 196;
+          Color2[2] = 25;
+  int[] Color3 = new int[3];
+          Color3[0] = 78;
+          Color3[1] = 186;
+          Color3[2] = 111;
+  int[] Color4 = new int[3];
+          Color4[0] = 45;
+          Color4[1] = 149;
+          Color4[2] = 191;
+  int[] Color5 = new int[3];
+          Color5[0] = 149;
+          Color5[1] = 91;
+          Color5[2] = 165;
+ 
+//storing a color pallette
+  colorPallette = new int[][]{Color1, Color2, Color3, Color4, Color5 };
 }
 
 void draw(){
   background (255);
   
-  //strobe light squares
+//strobe light squares
   strokeWeight(0);
-  int squareAmount = 7;
+  int squareAmount = 3;
   int squareSize = height / squareAmount;
-  //generating the squares along the x axis
+  
+//generating the squares along the x axis
   for(int i = 0; i < squareAmount; i++){
       for(int x = 0; x < squareAmount; x++){
-           float r = random(5);
-           float g = random(5);
-           float b = random(155);
-           fill(r, g, b);
+           int colorArraySize = colorPallette.length;
+           int randomColor = int(random(colorArraySize));
+           fill((colorPallette[randomColor][0]), (colorPallette[randomColor][1]), (colorPallette[randomColor][2]));
            rect((x * squareSize), (i * squareSize), squareSize, squareSize);
            rect((i * squareSize), (x * squareSize), squareSize, squareSize);
-           delay(30);
       }    
   }
   
 //head
 noFill();
-stroke(204,51,51);
+stroke(0);
 strokeWeight(11);
 bezier(209,522,231,465,268,409,270,409);
 bezier(222,554,143,924,473,890,473,890);
@@ -60,7 +87,7 @@ strokeWeight(10);
 bezier(262,624,317,491,372,528,372,528);
 bezier(458,578,559,489,571,529,571,529);
 stroke(43,29,14);
-fill(204,51,51);
+fill(0);
 ellipse(363,578,55,105);
 ellipse(560,578,58,110);
 
@@ -145,5 +172,5 @@ line(691,830,708,803);
 line(714,840,728,815);
 bezier(737,863,757,808,762,818,762,818);
 
-
+delay(1000);
 }
